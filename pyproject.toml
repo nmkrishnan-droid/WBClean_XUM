@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "WBClean_XUM"
+version = "1.0"
+description = "A python library that will help developers trying to parse different excel file formats. From conversions of file formats to extracting required information from complex excel sheets, this library is the go-to I would like to propose to all of developer community."
+readme = "README.md"
+requires-python = ">=3.9"
+license = { text = "GNU" }
+authors = [
+  { name = "Muthu Krishnan" }
+]
+dependencies = [
+  "pandas>=2.0",
+  "openpyxl>=3.1.0",
+  "requests>=2.31.0",
+  "pywin32>=306; platform_system=='Windows'"
+]
+
+[project.urls]
+Repository = "https://github.com/nmkrishnan-droid/WBClean_XUM.git"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
