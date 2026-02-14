@@ -8,41 +8,36 @@ import os
 
 
 class WBClean_XUM:
-    def XUM_TransposeSheet(self, src_path,dst_sheet_name, src_sheet_name=None):
-        wb = load_workbook(src_path, data_only=False)  # set True if you want computed values instead of formulas
-        ws = wb[src_sheet_name] if src_sheet_name else wb.worksheets[0]
+    def XUM_TransposeSheet(self, srcPath,destinationSheetName, srcSheetName=None):
+        wb = load_workbook(srcPath, data_only=False)
+        ws = wb[srcSheetName] if srcSheetName else wb.worksheets[0]
 
-        # "Used range" bounds as Excel sees it (approx via openpyxl)
+
         min_row, max_row = ws.min_row, ws.max_row
         min_col, max_col = ws.min_column, ws.max_column
 
         out_wb = Workbook()
         out_ws = out_wb.active
-        out_ws.title = dst_sheet_name or (src_sheet_name + "_T")
+        out_ws.title = destinationSheetName or (srcSheetName + "_T")
 
-        # Read every cell in the used rectangle (including blanks) into a grid
+
         grid = [
             [ws.cell(row=r, column=c).value for c in range(min_col, max_col + 1)]
             for r in range(min_row, max_row + 1)
         ]
 
-        # Transpose the grid and write it out
         tgrid = list(zip(*grid))  # tuples
         for r, row_vals in enumerate(tgrid, start=1):
             for c, v in enumerate(row_vals, start=1):
                 out_ws.cell(row=r, column=c, value=v)
 
-        print(type(out_wb))
         tableList = []
         for row in out_ws.iter_rows():
             rowList = []
             for cell in row:
-                print(cell.value, end=" ")
                 rowList.append(cell.value)
-            print("\n")
             tableList.append(rowList)
 
-        print(f"First transposed table: {tableList}")
         return tableList
 
     def XUM_LLMFormat(self, prompt_ReqFeildString, prompt_ReqJSONOutputString, prompt_SampleData, groqModel, Key,
@@ -170,21 +165,16 @@ class WBClean_XUM:
 
         for i in transposedList:
             for ind, value in enumerate(i, start=1):
-                print(f"value found: {value}")
                 if value == None:
                     out.append(ind)
                 elif self.XUM_TextPresenceRegex(value, re.compile(rf'\b(?:{pattern})\b', re.I)):
-                    print(f"value matched: {value}")
                     foundIndex.append(ind)
                     break
 
-        print(out)
-        print(foundIndex)
+
         captureCols = sorted(x for x in out if x < foundIndex[-1])
-        print(f"Caputred! {captureCols}")  # [1, 2]
 
         freq = Counter(captureCols)
-        print(f"Frequency of col values{freq}")
         result = sorted(
             [(num, cnt) for num, cnt in freq.items() if cnt > 1],
             key=lambda x: x[1],
@@ -194,8 +184,6 @@ class WBClean_XUM:
 
         newTable = self.XUM_DeleteColumns(Table2dArray=transposedList, colIndexList=nums_only)
 
-        # TODO: good job Muthu!!! we made it this far!!
-        print(f"this is the new table after deleting unwanted columns: {newTable}")
 
         headerColumns = [x for i in newTable for ind, x in enumerate(i) if ind == 0]
         row1Values = [x for i in newTable for ind, x in enumerate(i) if ind == 1]
@@ -223,8 +211,6 @@ class WBClean_XUM:
                 else:
                     rowsWeDontNeed.append(rowInd)
 
-            print("\n")
-            print(f"rows we don't need: {rowsWeDontNeed}")
 
             TableWeNeed = self.XUM_DeleteRows(Table2dArray=newTable, rowIndexList=rowsWeDontNeed)
 
@@ -235,14 +221,8 @@ class WBClean_XUM:
 
         transposeToNormal = [list(r) for r in zip(*newTable)]
 
-        # remove_None = remove_none
-        # rowsToDelete = []
 
         if remove_none:
-            # for index,rows in enumerate(back):
-            #     for i,j in rows:
-            #         if i==None and j==None:
-            #             rowsToDelete.append(index)
             rowsToDelete = [idx for idx, row in enumerate(transposeToNormal) if all(v is None for v in row)]
             table = self.XUM_DeleteRows(Table2dArray=transposeToNormal, rowIndexList=rowsToDelete)
         else:
