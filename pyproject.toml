@@ -8,7 +8,7 @@ version = "1.1"
 description = "A python library that will help developers trying to parse different excel file formats. From conversions of file formats to extracting required information from complex excel sheets, this library is the go-to I would like to propose to all of developer community."
 readme = "README.md"
 requires-python = ">=3.9"
-license = { file = "LICENSE" }
+license = { text = "GNU" }
 authors = [
   { name = "Muthu Krishnan" }
 ]
@@ -24,7 +24,6 @@ Repository = "https://github.com/nmkrishnan-droid/WBClean_XUM.git"
 
 [tool.setuptools]
 package-dir = {"" = "src"}
-license-files = ["LICENSE"]
 
 [tool.setuptools.packages.find]
 where = ["src"]
