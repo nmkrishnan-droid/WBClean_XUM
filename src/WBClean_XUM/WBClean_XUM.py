@@ -8,7 +8,7 @@ import os
 
 
 class WBClean_XUM:
-    def XUM_TransposeSheet(self, src_path, src_sheet_name=None, dst_sheet_name=None):
+    def XUM_TransposeSheet(self, src_path,dst_sheet_name, src_sheet_name=None):
         wb = load_workbook(src_path, data_only=False)  # set True if you want computed values instead of formulas
         ws = wb[src_sheet_name] if src_sheet_name else wb.worksheets[0]
 
