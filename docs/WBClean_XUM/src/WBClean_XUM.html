@@ -18,14 +18,42 @@
         <input id="togglestate" type="checkbox" aria-hidden="true" tabindex="-1">
         <div>
 
-            <input type="search" placeholder="Search..." role="searchbox" aria-label="search"
-                   pattern=".+" required>
 
 
-            <h2>Submodules</h2>
-            <ul>
-                    <li><a href="WBClean_XUM/WBClean_XUM.html">WBClean_XUM</a></li>
-            </ul>
+
+            <h2>Documentation</h2>
+                <ul class="memberlist">
+            <li>
+                    <a class="class" href="#WBClean_XUM">WBClean_XUM</a>
+                            <ul class="memberlist">
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_TransposeSheet">XUM_TransposeSheet</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_LLMFormat">XUM_LLMFormat</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_DeleteRows">XUM_DeleteRows</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_DeleteColumns">XUM_DeleteColumns</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_TextPresenceRegex">XUM_TextPresenceRegex</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_XLSConversion">XUM_XLSConversion</a>
+                        </li>
+                        <li>
+                                <a class="function" href="#WBClean_XUM.XUM_Clean">XUM_Clean</a>
+                        </li>
+                </ul>
+
+            </li>
+            <li>
+                    <a class="function" href="#new">new</a>
+            </li>
+    </ul>
 
 
 
@@ -42,191 +70,616 @@
 WBClean_XUM<wbr>.src<wbr>.WBClean_XUM    </h1>
 
                 
-                
-                
-                
+                        <input id="mod-WBClean_XUM-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+
+                        <label class="view-source-button" for="mod-WBClean_XUM-view-source"><span>View Source</span></label>
+
+                        <div class="pdoc-code codehilite"><pre><span></span><span id="L-1"><a href="#L-1"><span class="linenos">1</span></a><span class="kn">from</span><span class="w"> </span><span class="nn">.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">WBClean_XUM</span>
+</span><span id="L-2"><a href="#L-2"><span class="linenos">2</span></a>
+</span><span id="L-3"><a href="#L-3"><span class="linenos">3</span></a><span class="k">def</span><span class="w"> </span><span class="nf">new</span><span class="p">():</span>
+</span><span id="L-4"><a href="#L-4"><span class="linenos">4</span></a>    <span class="k">return</span> <span class="n">WBClean_XUM</span><span class="p">()</span>
+</span><span id="L-5"><a href="#L-5"><span class="linenos">5</span></a>
+</span><span id="L-6"><a href="#L-6"><span class="linenos">6</span></a><span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;WBClean_XUM&quot;</span><span class="p">,</span> <span class="s2">&quot;new&quot;</span><span class="p">]</span>
+</span></pre></div>
+
+
             </section>
+                <section id="WBClean_XUM">
+                            <input id="WBClean_XUM-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr class">
+            
+    <span class="def">class</span>
+    <span class="name">WBClean_XUM</span>:
+
+                <label class="view-source-button" for="WBClean_XUM-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM-11"><a href="#WBClean_XUM-11"><span class="linenos"> 11</span></a><span class="k">class</span><span class="w"> </span><span class="nc">WBClean_XUM</span><span class="p">:</span>
+</span><span id="WBClean_XUM-12"><a href="#WBClean_XUM-12"><span class="linenos"> 12</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_TransposeSheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">srcPath</span><span class="p">,</span><span class="n">destinationSheetName</span><span class="p">,</span> <span class="n">srcSheetName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="WBClean_XUM-13"><a href="#WBClean_XUM-13"><span class="linenos"> 13</span></a>        <span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">srcPath</span><span class="p">,</span> <span class="n">data_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="WBClean_XUM-14"><a href="#WBClean_XUM-14"><span class="linenos"> 14</span></a>        <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">srcSheetName</span><span class="p">]</span> <span class="k">if</span> <span class="n">srcSheetName</span> <span class="k">else</span> <span class="n">wb</span><span class="o">.</span><span class="n">worksheets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="WBClean_XUM-15"><a href="#WBClean_XUM-15"><span class="linenos"> 15</span></a>
+</span><span id="WBClean_XUM-16"><a href="#WBClean_XUM-16"><span class="linenos"> 16</span></a>
+</span><span id="WBClean_XUM-17"><a href="#WBClean_XUM-17"><span class="linenos"> 17</span></a>        <span class="n">min_row</span><span class="p">,</span> <span class="n">max_row</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">min_row</span><span class="p">,</span> <span class="n">ws</span><span class="o">.</span><span class="n">max_row</span>
+</span><span id="WBClean_XUM-18"><a href="#WBClean_XUM-18"><span class="linenos"> 18</span></a>        <span class="n">min_col</span><span class="p">,</span> <span class="n">max_col</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">min_column</span><span class="p">,</span> <span class="n">ws</span><span class="o">.</span><span class="n">max_column</span>
+</span><span id="WBClean_XUM-19"><a href="#WBClean_XUM-19"><span class="linenos"> 19</span></a>
+</span><span id="WBClean_XUM-20"><a href="#WBClean_XUM-20"><span class="linenos"> 20</span></a>        <span class="n">out_wb</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+</span><span id="WBClean_XUM-21"><a href="#WBClean_XUM-21"><span class="linenos"> 21</span></a>        <span class="n">out_ws</span> <span class="o">=</span> <span class="n">out_wb</span><span class="o">.</span><span class="n">active</span>
+</span><span id="WBClean_XUM-22"><a href="#WBClean_XUM-22"><span class="linenos"> 22</span></a>        <span class="n">out_ws</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">destinationSheetName</span> <span class="ow">or</span> <span class="p">(</span><span class="n">srcSheetName</span> <span class="o">+</span> <span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+</span><span id="WBClean_XUM-23"><a href="#WBClean_XUM-23"><span class="linenos"> 23</span></a>
+</span><span id="WBClean_XUM-24"><a href="#WBClean_XUM-24"><span class="linenos"> 24</span></a>
+</span><span id="WBClean_XUM-25"><a href="#WBClean_XUM-25"><span class="linenos"> 25</span></a>        <span class="n">grid</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="WBClean_XUM-26"><a href="#WBClean_XUM-26"><span class="linenos"> 26</span></a>            <span class="p">[</span><span class="n">ws</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_col</span><span class="p">,</span> <span class="n">max_col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+</span><span id="WBClean_XUM-27"><a href="#WBClean_XUM-27"><span class="linenos"> 27</span></a>            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_row</span><span class="p">,</span> <span class="n">max_row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="WBClean_XUM-28"><a href="#WBClean_XUM-28"><span class="linenos"> 28</span></a>        <span class="p">]</span>
+</span><span id="WBClean_XUM-29"><a href="#WBClean_XUM-29"><span class="linenos"> 29</span></a>
+</span><span id="WBClean_XUM-30"><a href="#WBClean_XUM-30"><span class="linenos"> 30</span></a>        <span class="n">tgrid</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">))</span>  <span class="c1"># tuples</span>
+</span><span id="WBClean_XUM-31"><a href="#WBClean_XUM-31"><span class="linenos"> 31</span></a>        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">row_vals</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tgrid</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="WBClean_XUM-32"><a href="#WBClean_XUM-32"><span class="linenos"> 32</span></a>            <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row_vals</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="WBClean_XUM-33"><a href="#WBClean_XUM-33"><span class="linenos"> 33</span></a>                <span class="n">out_ws</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+</span><span id="WBClean_XUM-34"><a href="#WBClean_XUM-34"><span class="linenos"> 34</span></a>
+</span><span id="WBClean_XUM-35"><a href="#WBClean_XUM-35"><span class="linenos"> 35</span></a>        <span class="n">tableList</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM-36"><a href="#WBClean_XUM-36"><span class="linenos"> 36</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">out_ws</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">():</span>
+</span><span id="WBClean_XUM-37"><a href="#WBClean_XUM-37"><span class="linenos"> 37</span></a>            <span class="n">rowList</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM-38"><a href="#WBClean_XUM-38"><span class="linenos"> 38</span></a>            <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+</span><span id="WBClean_XUM-39"><a href="#WBClean_XUM-39"><span class="linenos"> 39</span></a>                <span class="n">rowList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="WBClean_XUM-40"><a href="#WBClean_XUM-40"><span class="linenos"> 40</span></a>            <span class="n">tableList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowList</span><span class="p">)</span>
+</span><span id="WBClean_XUM-41"><a href="#WBClean_XUM-41"><span class="linenos"> 41</span></a>
+</span><span id="WBClean_XUM-42"><a href="#WBClean_XUM-42"><span class="linenos"> 42</span></a>        <span class="k">return</span> <span class="n">tableList</span>
+</span><span id="WBClean_XUM-43"><a href="#WBClean_XUM-43"><span class="linenos"> 43</span></a>
+</span><span id="WBClean_XUM-44"><a href="#WBClean_XUM-44"><span class="linenos"> 44</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_LLMFormat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt_ReqFeildString</span><span class="p">,</span> <span class="n">prompt_ReqJSONOutputString</span><span class="p">,</span> <span class="n">prompt_SampleData</span><span class="p">,</span> <span class="n">groqModel</span><span class="p">,</span> <span class="n">Key</span><span class="p">,</span>
+</span><span id="WBClean_XUM-45"><a href="#WBClean_XUM-45"><span class="linenos"> 45</span></a>                      <span class="n">APIUrl</span><span class="p">,</span>
+</span><span id="WBClean_XUM-46"><a href="#WBClean_XUM-46"><span class="linenos"> 46</span></a>                      <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxTokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="n">prompt_FullCustom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="WBClean_XUM-47"><a href="#WBClean_XUM-47"><span class="linenos"> 47</span></a>                      <span class="n">prompt_Full</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="WBClean_XUM-48"><a href="#WBClean_XUM-48"><span class="linenos"> 48</span></a>        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="WBClean_XUM-49"><a href="#WBClean_XUM-49"><span class="linenos"> 49</span></a><span class="s2">        You are a data-mapping assistant.</span>
+</span><span id="WBClean_XUM-50"><a href="#WBClean_XUM-50"><span class="linenos"> 50</span></a>
+</span><span id="WBClean_XUM-51"><a href="#WBClean_XUM-51"><span class="linenos"> 51</span></a><span class="s2">        The SAMPLE DATA is given in /</span><span class="se">{{</span><span class="s2">Key:value</span><span class="se">}}</span><span class="s2"> format where Key is the column Name and the value is sample values for that column</span>
+</span><span id="WBClean_XUM-52"><a href="#WBClean_XUM-52"><span class="linenos"> 52</span></a>
+</span><span id="WBClean_XUM-53"><a href="#WBClean_XUM-53"><span class="linenos"> 53</span></a><span class="s2">        Map the SAMPLE DATA KEYS to the REQUIRED fields below.</span>
+</span><span id="WBClean_XUM-54"><a href="#WBClean_XUM-54"><span class="linenos"> 54</span></a>
+</span><span id="WBClean_XUM-55"><a href="#WBClean_XUM-55"><span class="linenos"> 55</span></a><span class="s2">        REQUIRED FIELDS:</span>
+</span><span id="WBClean_XUM-56"><a href="#WBClean_XUM-56"><span class="linenos"> 56</span></a><span class="s2">        </span><span class="si">{</span><span class="n">prompt_ReqFeildString</span><span class="si">}</span>
+</span><span id="WBClean_XUM-57"><a href="#WBClean_XUM-57"><span class="linenos"> 57</span></a>
+</span><span id="WBClean_XUM-58"><a href="#WBClean_XUM-58"><span class="linenos"> 58</span></a><span class="s2">        SAMPLE DATA:</span>
+</span><span id="WBClean_XUM-59"><a href="#WBClean_XUM-59"><span class="linenos"> 59</span></a><span class="s2">        </span><span class="si">{</span><span class="n">prompt_SampleData</span><span class="si">}</span>
+</span><span id="WBClean_XUM-60"><a href="#WBClean_XUM-60"><span class="linenos"> 60</span></a>
+</span><span id="WBClean_XUM-61"><a href="#WBClean_XUM-61"><span class="linenos"> 61</span></a><span class="s2">        RULES:</span>
+</span><span id="WBClean_XUM-62"><a href="#WBClean_XUM-62"><span class="linenos"> 62</span></a><span class="s2">        - Choose best column if multiple match</span>
+</span><span id="WBClean_XUM-63"><a href="#WBClean_XUM-63"><span class="linenos"> 63</span></a><span class="s2">        - Use null if none apply</span>
+</span><span id="WBClean_XUM-64"><a href="#WBClean_XUM-64"><span class="linenos"> 64</span></a><span class="s2">        - alt_cols must be a JSON array</span>
+</span><span id="WBClean_XUM-65"><a href="#WBClean_XUM-65"><span class="linenos"> 65</span></a><span class="s2">        - RETURN ONLY VALID JSON. NO TEXT.</span>
+</span><span id="WBClean_XUM-66"><a href="#WBClean_XUM-66"><span class="linenos"> 66</span></a>
+</span><span id="WBClean_XUM-67"><a href="#WBClean_XUM-67"><span class="linenos"> 67</span></a><span class="s2">        EXPECTED JSON FORMAT:</span>
+</span><span id="WBClean_XUM-68"><a href="#WBClean_XUM-68"><span class="linenos"> 68</span></a><span class="s2">        </span><span class="si">{</span><span class="n">prompt_ReqJSONOutputString</span><span class="si">}</span>
+</span><span id="WBClean_XUM-69"><a href="#WBClean_XUM-69"><span class="linenos"> 69</span></a>
+</span><span id="WBClean_XUM-70"><a href="#WBClean_XUM-70"><span class="linenos"> 70</span></a><span class="s2">        Return ONLY a JSON object. Do not use markdown, do not use code fences, do not add commentary.</span>
+</span><span id="WBClean_XUM-71"><a href="#WBClean_XUM-71"><span class="linenos"> 71</span></a>
+</span><span id="WBClean_XUM-72"><a href="#WBClean_XUM-72"><span class="linenos"> 72</span></a><span class="s2">        &quot;&quot;&quot;</span>
+</span><span id="WBClean_XUM-73"><a href="#WBClean_XUM-73"><span class="linenos"> 73</span></a>
+</span><span id="WBClean_XUM-74"><a href="#WBClean_XUM-74"><span class="linenos"> 74</span></a>        <span class="k">if</span> <span class="n">prompt_FullCustom</span><span class="p">:</span>
+</span><span id="WBClean_XUM-75"><a href="#WBClean_XUM-75"><span class="linenos"> 75</span></a>            <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt_Full</span>
+</span><span id="WBClean_XUM-76"><a href="#WBClean_XUM-76"><span class="linenos"> 76</span></a>
+</span><span id="WBClean_XUM-77"><a href="#WBClean_XUM-77"><span class="linenos"> 77</span></a>        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="WBClean_XUM-78"><a href="#WBClean_XUM-78"><span class="linenos"> 78</span></a>            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">groqModel</span><span class="p">,</span>
+</span><span id="WBClean_XUM-79"><a href="#WBClean_XUM-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="WBClean_XUM-80"><a href="#WBClean_XUM-80"><span class="linenos"> 80</span></a>                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
+</span><span id="WBClean_XUM-81"><a href="#WBClean_XUM-81"><span class="linenos"> 81</span></a>            <span class="p">],</span>
+</span><span id="WBClean_XUM-82"><a href="#WBClean_XUM-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">temperature</span><span class="p">,</span>
+</span><span id="WBClean_XUM-83"><a href="#WBClean_XUM-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="n">maxTokens</span>
+</span><span id="WBClean_XUM-84"><a href="#WBClean_XUM-84"><span class="linenos"> 84</span></a>        <span class="p">}</span>
+</span><span id="WBClean_XUM-85"><a href="#WBClean_XUM-85"><span class="linenos"> 85</span></a>
+</span><span id="WBClean_XUM-86"><a href="#WBClean_XUM-86"><span class="linenos"> 86</span></a>        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span><span id="WBClean_XUM-87"><a href="#WBClean_XUM-87"><span class="linenos"> 87</span></a>            <span class="n">APIUrl</span><span class="p">,</span>
+</span><span id="WBClean_XUM-88"><a href="#WBClean_XUM-88"><span class="linenos"> 88</span></a>            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+</span><span id="WBClean_XUM-89"><a href="#WBClean_XUM-89"><span class="linenos"> 89</span></a>                <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">Key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span id="WBClean_XUM-90"><a href="#WBClean_XUM-90"><span class="linenos"> 90</span></a>                <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="n">contentType</span><span class="p">,</span>
+</span><span id="WBClean_XUM-91"><a href="#WBClean_XUM-91"><span class="linenos"> 91</span></a>            <span class="p">},</span>
+</span><span id="WBClean_XUM-92"><a href="#WBClean_XUM-92"><span class="linenos"> 92</span></a>            <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+</span><span id="WBClean_XUM-93"><a href="#WBClean_XUM-93"><span class="linenos"> 93</span></a>            <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+</span><span id="WBClean_XUM-94"><a href="#WBClean_XUM-94"><span class="linenos"> 94</span></a>        <span class="p">)</span>
+</span><span id="WBClean_XUM-95"><a href="#WBClean_XUM-95"><span class="linenos"> 95</span></a>
+</span><span id="WBClean_XUM-96"><a href="#WBClean_XUM-96"><span class="linenos"> 96</span></a>        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+</span><span id="WBClean_XUM-97"><a href="#WBClean_XUM-97"><span class="linenos"> 97</span></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+</span><span id="WBClean_XUM-98"><a href="#WBClean_XUM-98"><span class="linenos"> 98</span></a>                <span class="sa">f</span><span class="s2">&quot;GROQ ERROR </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="WBClean_XUM-99"><a href="#WBClean_XUM-99"><span class="linenos"> 99</span></a>            <span class="p">)</span>
+</span><span id="WBClean_XUM-100"><a href="#WBClean_XUM-100"><span class="linenos">100</span></a>
+</span><span id="WBClean_XUM-101"><a href="#WBClean_XUM-101"><span class="linenos">101</span></a>        <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;choices&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+</span><span id="WBClean_XUM-102"><a href="#WBClean_XUM-102"><span class="linenos">102</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="WBClean_XUM-103"><a href="#WBClean_XUM-103"><span class="linenos">103</span></a>            <span class="n">data</span> <span class="o">=</span> <span class="n">content</span>
+</span><span id="WBClean_XUM-104"><a href="#WBClean_XUM-104"><span class="linenos">104</span></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="WBClean_XUM-105"><a href="#WBClean_XUM-105"><span class="linenos">105</span></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LLM did not return valid JSON. Raw content:</span><span class="se">\n</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span id="WBClean_XUM-106"><a href="#WBClean_XUM-106"><span class="linenos">106</span></a>
+</span><span id="WBClean_XUM-107"><a href="#WBClean_XUM-107"><span class="linenos">107</span></a>        <span class="k">return</span> <span class="n">data</span>
+</span><span id="WBClean_XUM-108"><a href="#WBClean_XUM-108"><span class="linenos">108</span></a>
+</span><span id="WBClean_XUM-109"><a href="#WBClean_XUM-109"><span class="linenos">109</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_DeleteRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Table2dArray</span><span class="p">,</span> <span class="n">rowIndexList</span><span class="p">):</span>
+</span><span id="WBClean_XUM-110"><a href="#WBClean_XUM-110"><span class="linenos">110</span></a>        <span class="n">rows_to_drop</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rowIndexList</span><span class="p">)</span>  <span class="c1"># 0-based indices</span>
+</span><span id="WBClean_XUM-111"><a href="#WBClean_XUM-111"><span class="linenos">111</span></a>
+</span><span id="WBClean_XUM-112"><a href="#WBClean_XUM-112"><span class="linenos">112</span></a>        <span class="n">newTable</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="WBClean_XUM-113"><a href="#WBClean_XUM-113"><span class="linenos">113</span></a>            <span class="n">row</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Table2dArray</span><span class="p">)</span>
+</span><span id="WBClean_XUM-114"><a href="#WBClean_XUM-114"><span class="linenos">114</span></a>            <span class="k">if</span> <span class="n">idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rows_to_drop</span>
+</span><span id="WBClean_XUM-115"><a href="#WBClean_XUM-115"><span class="linenos">115</span></a>        <span class="p">]</span>
+</span><span id="WBClean_XUM-116"><a href="#WBClean_XUM-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="n">newTable</span>
+</span><span id="WBClean_XUM-117"><a href="#WBClean_XUM-117"><span class="linenos">117</span></a>
+</span><span id="WBClean_XUM-118"><a href="#WBClean_XUM-118"><span class="linenos">118</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_DeleteColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Table2dArray</span><span class="p">,</span> <span class="n">colIndexList</span><span class="p">):</span>
+</span><span id="WBClean_XUM-119"><a href="#WBClean_XUM-119"><span class="linenos">119</span></a>        <span class="n">cols_to_drop</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">colIndexList</span><span class="p">)</span>
+</span><span id="WBClean_XUM-120"><a href="#WBClean_XUM-120"><span class="linenos">120</span></a>
+</span><span id="WBClean_XUM-121"><a href="#WBClean_XUM-121"><span class="linenos">121</span></a>        <span class="n">newTable</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM-122"><a href="#WBClean_XUM-122"><span class="linenos">122</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">Table2dArray</span><span class="p">:</span>
+</span><span id="WBClean_XUM-123"><a href="#WBClean_XUM-123"><span class="linenos">123</span></a>            <span class="c1"># keep values whose 1-based index is NOT in cols_to_drop</span>
+</span><span id="WBClean_XUM-124"><a href="#WBClean_XUM-124"><span class="linenos">124</span></a>            <span class="n">newRow</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cols_to_drop</span><span class="p">]</span>
+</span><span id="WBClean_XUM-125"><a href="#WBClean_XUM-125"><span class="linenos">125</span></a>            <span class="n">newTable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newRow</span><span class="p">)</span>
+</span><span id="WBClean_XUM-126"><a href="#WBClean_XUM-126"><span class="linenos">126</span></a>
+</span><span id="WBClean_XUM-127"><a href="#WBClean_XUM-127"><span class="linenos">127</span></a>        <span class="k">return</span> <span class="n">newTable</span>
+</span><span id="WBClean_XUM-128"><a href="#WBClean_XUM-128"><span class="linenos">128</span></a>
+</span><span id="WBClean_XUM-129"><a href="#WBClean_XUM-129"><span class="linenos">129</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_TextPresenceRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+</span><span id="WBClean_XUM-130"><a href="#WBClean_XUM-130"><span class="linenos">130</span></a>        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM-131"><a href="#WBClean_XUM-131"><span class="linenos">131</span></a>            <span class="k">return</span> <span class="kc">False</span>
+</span><span id="WBClean_XUM-132"><a href="#WBClean_XUM-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span><span id="WBClean_XUM-133"><a href="#WBClean_XUM-133"><span class="linenos">133</span></a>
+</span><span id="WBClean_XUM-134"><a href="#WBClean_XUM-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_XLSConversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xlsPath</span><span class="p">):</span>
+</span><span id="WBClean_XUM-135"><a href="#WBClean_XUM-135"><span class="linenos">135</span></a>        <span class="n">xls_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">xlsPath</span><span class="p">)</span>
+</span><span id="WBClean_XUM-136"><a href="#WBClean_XUM-136"><span class="linenos">136</span></a>        <span class="k">if</span> <span class="n">xlsPath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM-137"><a href="#WBClean_XUM-137"><span class="linenos">137</span></a>            <span class="n">root</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">xls_path</span><span class="p">)</span>
+</span><span id="WBClean_XUM-138"><a href="#WBClean_XUM-138"><span class="linenos">138</span></a>            <span class="n">xlsx_path</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span>
+</span><span id="WBClean_XUM-139"><a href="#WBClean_XUM-139"><span class="linenos">139</span></a>        <span class="n">xlsxPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">xlsPath</span><span class="p">)</span>
+</span><span id="WBClean_XUM-140"><a href="#WBClean_XUM-140"><span class="linenos">140</span></a>
+</span><span id="WBClean_XUM-141"><a href="#WBClean_XUM-141"><span class="linenos">141</span></a>        <span class="n">excel</span> <span class="o">=</span> <span class="n">win32</span><span class="o">.</span><span class="n">Dispatch</span><span class="p">(</span><span class="s2">&quot;Excel.Application&quot;</span><span class="p">)</span>
+</span><span id="WBClean_XUM-142"><a href="#WBClean_XUM-142"><span class="linenos">142</span></a>        <span class="n">excel</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="WBClean_XUM-143"><a href="#WBClean_XUM-143"><span class="linenos">143</span></a>        <span class="n">excel</span><span class="o">.</span><span class="n">DisplayAlerts</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="WBClean_XUM-144"><a href="#WBClean_XUM-144"><span class="linenos">144</span></a>
+</span><span id="WBClean_XUM-145"><a href="#WBClean_XUM-145"><span class="linenos">145</span></a>        <span class="n">wb</span> <span class="o">=</span> <span class="n">excel</span><span class="o">.</span><span class="n">Workbooks</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">xls_path</span><span class="p">)</span>
+</span><span id="WBClean_XUM-146"><a href="#WBClean_XUM-146"><span class="linenos">146</span></a>        <span class="n">wb</span><span class="o">.</span><span class="n">SaveAs</span><span class="p">(</span><span class="n">xlsxPath</span><span class="p">,</span> <span class="n">FileFormat</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>  <span class="c1"># 51 = xlOpenXMLWorkbook (.xlsx)</span>
+</span><span id="WBClean_XUM-147"><a href="#WBClean_XUM-147"><span class="linenos">147</span></a>        <span class="n">wb</span><span class="o">.</span><span class="n">Close</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="WBClean_XUM-148"><a href="#WBClean_XUM-148"><span class="linenos">148</span></a>        <span class="n">excel</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>
+</span><span id="WBClean_XUM-149"><a href="#WBClean_XUM-149"><span class="linenos">149</span></a>
+</span><span id="WBClean_XUM-150"><a href="#WBClean_XUM-150"><span class="linenos">150</span></a>        <span class="k">return</span> <span class="n">xlsxPath</span>
+</span><span id="WBClean_XUM-151"><a href="#WBClean_XUM-151"><span class="linenos">151</span></a>
+</span><span id="WBClean_XUM-152"><a href="#WBClean_XUM-152"><span class="linenos">152</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_Clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">returnDF</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_none</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">getImpFeatures</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="WBClean_XUM-153"><a href="#WBClean_XUM-153"><span class="linenos">153</span></a>                  <span class="n">prompt_ReqFeildString</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prompt_ReqJSONOutputString</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="WBClean_XUM-154"><a href="#WBClean_XUM-154"><span class="linenos">154</span></a>                  <span class="n">sheetName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="WBClean_XUM-155"><a href="#WBClean_XUM-155"><span class="linenos">155</span></a>                  <span class="n">destinationSheet</span><span class="o">=</span><span class="s2">&quot;WBClean_XUM&quot;</span><span class="p">,</span>
+</span><span id="WBClean_XUM-156"><a href="#WBClean_XUM-156"><span class="linenos">156</span></a>                  <span class="n">APIUrl</span><span class="o">=</span><span class="s2">&quot;https://api.groq.com/openai/v1/chat/completions&quot;</span><span class="p">,</span> <span class="n">groqModel</span><span class="o">=</span><span class="s2">&quot;llama-3.3-70b-versatile&quot;</span><span class="p">,</span>
+</span><span id="WBClean_XUM-157"><a href="#WBClean_XUM-157"><span class="linenos">157</span></a>                  <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxTokens</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
+</span><span id="WBClean_XUM-158"><a href="#WBClean_XUM-158"><span class="linenos">158</span></a>        <span class="n">transposedList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_TransposeSheet</span><span class="p">(</span>
+</span><span id="WBClean_XUM-159"><a href="#WBClean_XUM-159"><span class="linenos">159</span></a>            <span class="n">src_path</span><span class="o">=</span><span class="n">filePath</span><span class="p">,</span>
+</span><span id="WBClean_XUM-160"><a href="#WBClean_XUM-160"><span class="linenos">160</span></a>            <span class="n">src_sheet_name</span><span class="o">=</span><span class="n">sheetName</span><span class="p">,</span>
+</span><span id="WBClean_XUM-161"><a href="#WBClean_XUM-161"><span class="linenos">161</span></a>            <span class="n">dst_sheet_name</span><span class="o">=</span><span class="n">destinationSheet</span>
+</span><span id="WBClean_XUM-162"><a href="#WBClean_XUM-162"><span class="linenos">162</span></a>        <span class="p">)</span>
+</span><span id="WBClean_XUM-163"><a href="#WBClean_XUM-163"><span class="linenos">163</span></a>
+</span><span id="WBClean_XUM-164"><a href="#WBClean_XUM-164"><span class="linenos">164</span></a>        <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM-165"><a href="#WBClean_XUM-165"><span class="linenos">165</span></a>        <span class="n">foundIndex</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM-166"><a href="#WBClean_XUM-166"><span class="linenos">166</span></a>
+</span><span id="WBClean_XUM-167"><a href="#WBClean_XUM-167"><span class="linenos">167</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">transposedList</span><span class="p">:</span>
+</span><span id="WBClean_XUM-168"><a href="#WBClean_XUM-168"><span class="linenos">168</span></a>            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="WBClean_XUM-169"><a href="#WBClean_XUM-169"><span class="linenos">169</span></a>                <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM-170"><a href="#WBClean_XUM-170"><span class="linenos">170</span></a>                    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+</span><span id="WBClean_XUM-171"><a href="#WBClean_XUM-171"><span class="linenos">171</span></a>                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_TextPresenceRegex</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;\b(?:</span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s1">)\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)):</span>
+</span><span id="WBClean_XUM-172"><a href="#WBClean_XUM-172"><span class="linenos">172</span></a>                    <span class="n">foundIndex</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+</span><span id="WBClean_XUM-173"><a href="#WBClean_XUM-173"><span class="linenos">173</span></a>                    <span class="k">break</span>
+</span><span id="WBClean_XUM-174"><a href="#WBClean_XUM-174"><span class="linenos">174</span></a>
+</span><span id="WBClean_XUM-175"><a href="#WBClean_XUM-175"><span class="linenos">175</span></a>
+</span><span id="WBClean_XUM-176"><a href="#WBClean_XUM-176"><span class="linenos">176</span></a>        <span class="n">captureCols</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">foundIndex</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="WBClean_XUM-177"><a href="#WBClean_XUM-177"><span class="linenos">177</span></a>
+</span><span id="WBClean_XUM-178"><a href="#WBClean_XUM-178"><span class="linenos">178</span></a>        <span class="n">freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">captureCols</span><span class="p">)</span>
+</span><span id="WBClean_XUM-179"><a href="#WBClean_XUM-179"><span class="linenos">179</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+</span><span id="WBClean_XUM-180"><a href="#WBClean_XUM-180"><span class="linenos">180</span></a>            <span class="p">[(</span><span class="n">num</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="WBClean_XUM-181"><a href="#WBClean_XUM-181"><span class="linenos">181</span></a>            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span id="WBClean_XUM-182"><a href="#WBClean_XUM-182"><span class="linenos">182</span></a>            <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="WBClean_XUM-183"><a href="#WBClean_XUM-183"><span class="linenos">183</span></a>        <span class="p">)</span>
+</span><span id="WBClean_XUM-184"><a href="#WBClean_XUM-184"><span class="linenos">184</span></a>        <span class="n">nums_only</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
+</span><span id="WBClean_XUM-185"><a href="#WBClean_XUM-185"><span class="linenos">185</span></a>
+</span><span id="WBClean_XUM-186"><a href="#WBClean_XUM-186"><span class="linenos">186</span></a>        <span class="n">newTable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_DeleteColumns</span><span class="p">(</span><span class="n">Table2dArray</span><span class="o">=</span><span class="n">transposedList</span><span class="p">,</span> <span class="n">colIndexList</span><span class="o">=</span><span class="n">nums_only</span><span class="p">)</span>
+</span><span id="WBClean_XUM-187"><a href="#WBClean_XUM-187"><span class="linenos">187</span></a>
+</span><span id="WBClean_XUM-188"><a href="#WBClean_XUM-188"><span class="linenos">188</span></a>
+</span><span id="WBClean_XUM-189"><a href="#WBClean_XUM-189"><span class="linenos">189</span></a>        <span class="n">headerColumns</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">newTable</span> <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</span><span id="WBClean_XUM-190"><a href="#WBClean_XUM-190"><span class="linenos">190</span></a>        <span class="n">row1Values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">newTable</span> <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+</span><span id="WBClean_XUM-191"><a href="#WBClean_XUM-191"><span class="linenos">191</span></a>
+</span><span id="WBClean_XUM-192"><a href="#WBClean_XUM-192"><span class="linenos">192</span></a>        <span class="k">if</span> <span class="n">getImpFeatures</span><span class="p">:</span>
+</span><span id="WBClean_XUM-193"><a href="#WBClean_XUM-193"><span class="linenos">193</span></a>            <span class="n">testSample</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">headerColumns</span><span class="p">,</span> <span class="n">row1Values</span><span class="p">))</span>
+</span><span id="WBClean_XUM-194"><a href="#WBClean_XUM-194"><span class="linenos">194</span></a>            <span class="n">columnMapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_LLMFormat</span><span class="p">(</span>
+</span><span id="WBClean_XUM-195"><a href="#WBClean_XUM-195"><span class="linenos">195</span></a>                <span class="n">prompt_ReqFeildString</span><span class="o">=</span><span class="n">prompt_ReqFeildString</span><span class="p">,</span>
+</span><span id="WBClean_XUM-196"><a href="#WBClean_XUM-196"><span class="linenos">196</span></a>                <span class="n">prompt_ReqJSONOutputString</span><span class="o">=</span><span class="n">prompt_ReqJSONOutputString</span><span class="p">,</span>
+</span><span id="WBClean_XUM-197"><a href="#WBClean_XUM-197"><span class="linenos">197</span></a>                <span class="n">prompt_SampleData</span><span class="o">=</span><span class="n">testSample</span><span class="p">,</span>
+</span><span id="WBClean_XUM-198"><a href="#WBClean_XUM-198"><span class="linenos">198</span></a>                <span class="n">Key</span><span class="o">=</span><span class="n">Key</span><span class="p">,</span>
+</span><span id="WBClean_XUM-199"><a href="#WBClean_XUM-199"><span class="linenos">199</span></a>                <span class="n">APIUrl</span><span class="o">=</span><span class="n">APIUrl</span><span class="p">,</span>
+</span><span id="WBClean_XUM-200"><a href="#WBClean_XUM-200"><span class="linenos">200</span></a>                <span class="n">groqModel</span><span class="o">=</span><span class="n">groqModel</span><span class="p">,</span>
+</span><span id="WBClean_XUM-201"><a href="#WBClean_XUM-201"><span class="linenos">201</span></a>                <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+</span><span id="WBClean_XUM-202"><a href="#WBClean_XUM-202"><span class="linenos">202</span></a>                <span class="n">maxTokens</span><span class="o">=</span><span class="n">maxTokens</span><span class="p">,</span>
+</span><span id="WBClean_XUM-203"><a href="#WBClean_XUM-203"><span class="linenos">203</span></a>                <span class="n">contentType</span><span class="o">=</span><span class="n">contentType</span>
+</span><span id="WBClean_XUM-204"><a href="#WBClean_XUM-204"><span class="linenos">204</span></a>            <span class="p">)</span>
+</span><span id="WBClean_XUM-205"><a href="#WBClean_XUM-205"><span class="linenos">205</span></a>
+</span><span id="WBClean_XUM-206"><a href="#WBClean_XUM-206"><span class="linenos">206</span></a>            <span class="n">rowsWeDontNeed</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM-207"><a href="#WBClean_XUM-207"><span class="linenos">207</span></a>            <span class="k">for</span> <span class="n">rowInd</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">newTable</span><span class="p">):</span>
+</span><span id="WBClean_XUM-208"><a href="#WBClean_XUM-208"><span class="linenos">208</span></a>                <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM-209"><a href="#WBClean_XUM-209"><span class="linenos">209</span></a>                    <span class="n">rowsWeDontNeed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowInd</span><span class="p">)</span>
+</span><span id="WBClean_XUM-210"><a href="#WBClean_XUM-210"><span class="linenos">210</span></a>                <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">columnMapping</span><span class="p">:</span>
+</span><span id="WBClean_XUM-211"><a href="#WBClean_XUM-211"><span class="linenos">211</span></a>                    <span class="k">pass</span>
+</span><span id="WBClean_XUM-212"><a href="#WBClean_XUM-212"><span class="linenos">212</span></a>                <span class="k">else</span><span class="p">:</span>
+</span><span id="WBClean_XUM-213"><a href="#WBClean_XUM-213"><span class="linenos">213</span></a>                    <span class="n">rowsWeDontNeed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowInd</span><span class="p">)</span>
+</span><span id="WBClean_XUM-214"><a href="#WBClean_XUM-214"><span class="linenos">214</span></a>
+</span><span id="WBClean_XUM-215"><a href="#WBClean_XUM-215"><span class="linenos">215</span></a>
+</span><span id="WBClean_XUM-216"><a href="#WBClean_XUM-216"><span class="linenos">216</span></a>            <span class="n">TableWeNeed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_DeleteRows</span><span class="p">(</span><span class="n">Table2dArray</span><span class="o">=</span><span class="n">newTable</span><span class="p">,</span> <span class="n">rowIndexList</span><span class="o">=</span><span class="n">rowsWeDontNeed</span><span class="p">)</span>
+</span><span id="WBClean_XUM-217"><a href="#WBClean_XUM-217"><span class="linenos">217</span></a>
+</span><span id="WBClean_XUM-218"><a href="#WBClean_XUM-218"><span class="linenos">218</span></a>            <span class="n">newTable</span> <span class="o">=</span> <span class="n">TableWeNeed</span>
+</span><span id="WBClean_XUM-219"><a href="#WBClean_XUM-219"><span class="linenos">219</span></a>
+</span><span id="WBClean_XUM-220"><a href="#WBClean_XUM-220"><span class="linenos">220</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="WBClean_XUM-221"><a href="#WBClean_XUM-221"><span class="linenos">221</span></a>            <span class="n">newTable</span> <span class="o">=</span> <span class="n">newTable</span>
+</span><span id="WBClean_XUM-222"><a href="#WBClean_XUM-222"><span class="linenos">222</span></a>
+</span><span id="WBClean_XUM-223"><a href="#WBClean_XUM-223"><span class="linenos">223</span></a>        <span class="n">transposeToNormal</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">newTable</span><span class="p">)]</span>
+</span><span id="WBClean_XUM-224"><a href="#WBClean_XUM-224"><span class="linenos">224</span></a>
+</span><span id="WBClean_XUM-225"><a href="#WBClean_XUM-225"><span class="linenos">225</span></a>
+</span><span id="WBClean_XUM-226"><a href="#WBClean_XUM-226"><span class="linenos">226</span></a>        <span class="k">if</span> <span class="n">remove_none</span><span class="p">:</span>
+</span><span id="WBClean_XUM-227"><a href="#WBClean_XUM-227"><span class="linenos">227</span></a>            <span class="n">rowsToDelete</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">transposeToNormal</span><span class="p">)</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="p">)]</span>
+</span><span id="WBClean_XUM-228"><a href="#WBClean_XUM-228"><span class="linenos">228</span></a>            <span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_DeleteRows</span><span class="p">(</span><span class="n">Table2dArray</span><span class="o">=</span><span class="n">transposeToNormal</span><span class="p">,</span> <span class="n">rowIndexList</span><span class="o">=</span><span class="n">rowsToDelete</span><span class="p">)</span>
+</span><span id="WBClean_XUM-229"><a href="#WBClean_XUM-229"><span class="linenos">229</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="WBClean_XUM-230"><a href="#WBClean_XUM-230"><span class="linenos">230</span></a>            <span class="n">table</span> <span class="o">=</span> <span class="n">transposeToNormal</span>
+</span><span id="WBClean_XUM-231"><a href="#WBClean_XUM-231"><span class="linenos">231</span></a>
+</span><span id="WBClean_XUM-232"><a href="#WBClean_XUM-232"><span class="linenos">232</span></a>        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">columns</span><span class="o">=</span><span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="WBClean_XUM-233"><a href="#WBClean_XUM-233"><span class="linenos">233</span></a>
+</span><span id="WBClean_XUM-234"><a href="#WBClean_XUM-234"><span class="linenos">234</span></a>        <span class="k">return</span> <span class="n">df</span> <span class="k">if</span> <span class="n">returnDF</span> <span class="k">else</span> <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">destinationSheet</span><span class="si">}</span><span class="s2">.xlsx&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+    
+
+                            <div id="WBClean_XUM.XUM_TransposeSheet" class="classattr">
+                                        <input id="WBClean_XUM.XUM_TransposeSheet-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_TransposeSheet</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">srcPath</span>, </span><span class="param"><span class="n">destinationSheetName</span>, </span><span class="param"><span class="n">srcSheetName</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_TransposeSheet-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_TransposeSheet"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_TransposeSheet-12"><a href="#WBClean_XUM.XUM_TransposeSheet-12"><span class="linenos">12</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_TransposeSheet</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">srcPath</span><span class="p">,</span><span class="n">destinationSheetName</span><span class="p">,</span> <span class="n">srcSheetName</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-13"><a href="#WBClean_XUM.XUM_TransposeSheet-13"><span class="linenos">13</span></a>        <span class="n">wb</span> <span class="o">=</span> <span class="n">load_workbook</span><span class="p">(</span><span class="n">srcPath</span><span class="p">,</span> <span class="n">data_only</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-14"><a href="#WBClean_XUM.XUM_TransposeSheet-14"><span class="linenos">14</span></a>        <span class="n">ws</span> <span class="o">=</span> <span class="n">wb</span><span class="p">[</span><span class="n">srcSheetName</span><span class="p">]</span> <span class="k">if</span> <span class="n">srcSheetName</span> <span class="k">else</span> <span class="n">wb</span><span class="o">.</span><span class="n">worksheets</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-15"><a href="#WBClean_XUM.XUM_TransposeSheet-15"><span class="linenos">15</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-16"><a href="#WBClean_XUM.XUM_TransposeSheet-16"><span class="linenos">16</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-17"><a href="#WBClean_XUM.XUM_TransposeSheet-17"><span class="linenos">17</span></a>        <span class="n">min_row</span><span class="p">,</span> <span class="n">max_row</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">min_row</span><span class="p">,</span> <span class="n">ws</span><span class="o">.</span><span class="n">max_row</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-18"><a href="#WBClean_XUM.XUM_TransposeSheet-18"><span class="linenos">18</span></a>        <span class="n">min_col</span><span class="p">,</span> <span class="n">max_col</span> <span class="o">=</span> <span class="n">ws</span><span class="o">.</span><span class="n">min_column</span><span class="p">,</span> <span class="n">ws</span><span class="o">.</span><span class="n">max_column</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-19"><a href="#WBClean_XUM.XUM_TransposeSheet-19"><span class="linenos">19</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-20"><a href="#WBClean_XUM.XUM_TransposeSheet-20"><span class="linenos">20</span></a>        <span class="n">out_wb</span> <span class="o">=</span> <span class="n">Workbook</span><span class="p">()</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-21"><a href="#WBClean_XUM.XUM_TransposeSheet-21"><span class="linenos">21</span></a>        <span class="n">out_ws</span> <span class="o">=</span> <span class="n">out_wb</span><span class="o">.</span><span class="n">active</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-22"><a href="#WBClean_XUM.XUM_TransposeSheet-22"><span class="linenos">22</span></a>        <span class="n">out_ws</span><span class="o">.</span><span class="n">title</span> <span class="o">=</span> <span class="n">destinationSheetName</span> <span class="ow">or</span> <span class="p">(</span><span class="n">srcSheetName</span> <span class="o">+</span> <span class="s2">&quot;_T&quot;</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-23"><a href="#WBClean_XUM.XUM_TransposeSheet-23"><span class="linenos">23</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-24"><a href="#WBClean_XUM.XUM_TransposeSheet-24"><span class="linenos">24</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-25"><a href="#WBClean_XUM.XUM_TransposeSheet-25"><span class="linenos">25</span></a>        <span class="n">grid</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-26"><a href="#WBClean_XUM.XUM_TransposeSheet-26"><span class="linenos">26</span></a>            <span class="p">[</span><span class="n">ws</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="n">c</span><span class="p">)</span><span class="o">.</span><span class="n">value</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_col</span><span class="p">,</span> <span class="n">max_col</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)]</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-27"><a href="#WBClean_XUM.XUM_TransposeSheet-27"><span class="linenos">27</span></a>            <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">min_row</span><span class="p">,</span> <span class="n">max_row</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-28"><a href="#WBClean_XUM.XUM_TransposeSheet-28"><span class="linenos">28</span></a>        <span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-29"><a href="#WBClean_XUM.XUM_TransposeSheet-29"><span class="linenos">29</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-30"><a href="#WBClean_XUM.XUM_TransposeSheet-30"><span class="linenos">30</span></a>        <span class="n">tgrid</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">grid</span><span class="p">))</span>  <span class="c1"># tuples</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-31"><a href="#WBClean_XUM.XUM_TransposeSheet-31"><span class="linenos">31</span></a>        <span class="k">for</span> <span class="n">r</span><span class="p">,</span> <span class="n">row_vals</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">tgrid</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-32"><a href="#WBClean_XUM.XUM_TransposeSheet-32"><span class="linenos">32</span></a>            <span class="k">for</span> <span class="n">c</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row_vals</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-33"><a href="#WBClean_XUM.XUM_TransposeSheet-33"><span class="linenos">33</span></a>                <span class="n">out_ws</span><span class="o">.</span><span class="n">cell</span><span class="p">(</span><span class="n">row</span><span class="o">=</span><span class="n">r</span><span class="p">,</span> <span class="n">column</span><span class="o">=</span><span class="n">c</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="n">v</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-34"><a href="#WBClean_XUM.XUM_TransposeSheet-34"><span class="linenos">34</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-35"><a href="#WBClean_XUM.XUM_TransposeSheet-35"><span class="linenos">35</span></a>        <span class="n">tableList</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-36"><a href="#WBClean_XUM.XUM_TransposeSheet-36"><span class="linenos">36</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">out_ws</span><span class="o">.</span><span class="n">iter_rows</span><span class="p">():</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-37"><a href="#WBClean_XUM.XUM_TransposeSheet-37"><span class="linenos">37</span></a>            <span class="n">rowList</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-38"><a href="#WBClean_XUM.XUM_TransposeSheet-38"><span class="linenos">38</span></a>            <span class="k">for</span> <span class="n">cell</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-39"><a href="#WBClean_XUM.XUM_TransposeSheet-39"><span class="linenos">39</span></a>                <span class="n">rowList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cell</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-40"><a href="#WBClean_XUM.XUM_TransposeSheet-40"><span class="linenos">40</span></a>            <span class="n">tableList</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowList</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-41"><a href="#WBClean_XUM.XUM_TransposeSheet-41"><span class="linenos">41</span></a>
+</span><span id="WBClean_XUM.XUM_TransposeSheet-42"><a href="#WBClean_XUM.XUM_TransposeSheet-42"><span class="linenos">42</span></a>        <span class="k">return</span> <span class="n">tableList</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="WBClean_XUM.XUM_LLMFormat" class="classattr">
+                                        <input id="WBClean_XUM.XUM_LLMFormat-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_LLMFormat</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">prompt_ReqFeildString</span>,</span><span class="param">	<span class="n">prompt_ReqJSONOutputString</span>,</span><span class="param">	<span class="n">prompt_SampleData</span>,</span><span class="param">	<span class="n">groqModel</span>,</span><span class="param">	<span class="n">Key</span>,</span><span class="param">	<span class="n">APIUrl</span>,</span><span class="param">	<span class="n">temperature</span><span class="o">=</span><span class="mi">0</span>,</span><span class="param">	<span class="n">maxTokens</span><span class="o">=</span><span class="mi">512</span>,</span><span class="param">	<span class="n">contentType</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span>,</span><span class="param">	<span class="n">prompt_FullCustom</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">prompt_Full</span><span class="o">=</span><span class="kc">None</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_LLMFormat-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_LLMFormat"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_LLMFormat-44"><a href="#WBClean_XUM.XUM_LLMFormat-44"><span class="linenos"> 44</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_LLMFormat</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">prompt_ReqFeildString</span><span class="p">,</span> <span class="n">prompt_ReqJSONOutputString</span><span class="p">,</span> <span class="n">prompt_SampleData</span><span class="p">,</span> <span class="n">groqModel</span><span class="p">,</span> <span class="n">Key</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-45"><a href="#WBClean_XUM.XUM_LLMFormat-45"><span class="linenos"> 45</span></a>                      <span class="n">APIUrl</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-46"><a href="#WBClean_XUM.XUM_LLMFormat-46"><span class="linenos"> 46</span></a>                      <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxTokens</span><span class="o">=</span><span class="mi">512</span><span class="p">,</span> <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="n">prompt_FullCustom</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-47"><a href="#WBClean_XUM.XUM_LLMFormat-47"><span class="linenos"> 47</span></a>                      <span class="n">prompt_Full</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-48"><a href="#WBClean_XUM.XUM_LLMFormat-48"><span class="linenos"> 48</span></a>        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;&quot;&quot;</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-49"><a href="#WBClean_XUM.XUM_LLMFormat-49"><span class="linenos"> 49</span></a><span class="s2">        You are a data-mapping assistant.</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-50"><a href="#WBClean_XUM.XUM_LLMFormat-50"><span class="linenos"> 50</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-51"><a href="#WBClean_XUM.XUM_LLMFormat-51"><span class="linenos"> 51</span></a><span class="s2">        The SAMPLE DATA is given in /</span><span class="se">{{</span><span class="s2">Key:value</span><span class="se">}}</span><span class="s2"> format where Key is the column Name and the value is sample values for that column</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-52"><a href="#WBClean_XUM.XUM_LLMFormat-52"><span class="linenos"> 52</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-53"><a href="#WBClean_XUM.XUM_LLMFormat-53"><span class="linenos"> 53</span></a><span class="s2">        Map the SAMPLE DATA KEYS to the REQUIRED fields below.</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-54"><a href="#WBClean_XUM.XUM_LLMFormat-54"><span class="linenos"> 54</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-55"><a href="#WBClean_XUM.XUM_LLMFormat-55"><span class="linenos"> 55</span></a><span class="s2">        REQUIRED FIELDS:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-56"><a href="#WBClean_XUM.XUM_LLMFormat-56"><span class="linenos"> 56</span></a><span class="s2">        </span><span class="si">{</span><span class="n">prompt_ReqFeildString</span><span class="si">}</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-57"><a href="#WBClean_XUM.XUM_LLMFormat-57"><span class="linenos"> 57</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-58"><a href="#WBClean_XUM.XUM_LLMFormat-58"><span class="linenos"> 58</span></a><span class="s2">        SAMPLE DATA:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-59"><a href="#WBClean_XUM.XUM_LLMFormat-59"><span class="linenos"> 59</span></a><span class="s2">        </span><span class="si">{</span><span class="n">prompt_SampleData</span><span class="si">}</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-60"><a href="#WBClean_XUM.XUM_LLMFormat-60"><span class="linenos"> 60</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-61"><a href="#WBClean_XUM.XUM_LLMFormat-61"><span class="linenos"> 61</span></a><span class="s2">        RULES:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-62"><a href="#WBClean_XUM.XUM_LLMFormat-62"><span class="linenos"> 62</span></a><span class="s2">        - Choose best column if multiple match</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-63"><a href="#WBClean_XUM.XUM_LLMFormat-63"><span class="linenos"> 63</span></a><span class="s2">        - Use null if none apply</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-64"><a href="#WBClean_XUM.XUM_LLMFormat-64"><span class="linenos"> 64</span></a><span class="s2">        - alt_cols must be a JSON array</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-65"><a href="#WBClean_XUM.XUM_LLMFormat-65"><span class="linenos"> 65</span></a><span class="s2">        - RETURN ONLY VALID JSON. NO TEXT.</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-66"><a href="#WBClean_XUM.XUM_LLMFormat-66"><span class="linenos"> 66</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-67"><a href="#WBClean_XUM.XUM_LLMFormat-67"><span class="linenos"> 67</span></a><span class="s2">        EXPECTED JSON FORMAT:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-68"><a href="#WBClean_XUM.XUM_LLMFormat-68"><span class="linenos"> 68</span></a><span class="s2">        </span><span class="si">{</span><span class="n">prompt_ReqJSONOutputString</span><span class="si">}</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-69"><a href="#WBClean_XUM.XUM_LLMFormat-69"><span class="linenos"> 69</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-70"><a href="#WBClean_XUM.XUM_LLMFormat-70"><span class="linenos"> 70</span></a><span class="s2">        Return ONLY a JSON object. Do not use markdown, do not use code fences, do not add commentary.</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-71"><a href="#WBClean_XUM.XUM_LLMFormat-71"><span class="linenos"> 71</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-72"><a href="#WBClean_XUM.XUM_LLMFormat-72"><span class="linenos"> 72</span></a><span class="s2">        &quot;&quot;&quot;</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-73"><a href="#WBClean_XUM.XUM_LLMFormat-73"><span class="linenos"> 73</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-74"><a href="#WBClean_XUM.XUM_LLMFormat-74"><span class="linenos"> 74</span></a>        <span class="k">if</span> <span class="n">prompt_FullCustom</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-75"><a href="#WBClean_XUM.XUM_LLMFormat-75"><span class="linenos"> 75</span></a>            <span class="n">prompt</span> <span class="o">=</span> <span class="n">prompt_Full</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-76"><a href="#WBClean_XUM.XUM_LLMFormat-76"><span class="linenos"> 76</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-77"><a href="#WBClean_XUM.XUM_LLMFormat-77"><span class="linenos"> 77</span></a>        <span class="n">payload</span> <span class="o">=</span> <span class="p">{</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-78"><a href="#WBClean_XUM.XUM_LLMFormat-78"><span class="linenos"> 78</span></a>            <span class="s2">&quot;model&quot;</span><span class="p">:</span> <span class="n">groqModel</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-79"><a href="#WBClean_XUM.XUM_LLMFormat-79"><span class="linenos"> 79</span></a>            <span class="s2">&quot;messages&quot;</span><span class="p">:</span> <span class="p">[</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-80"><a href="#WBClean_XUM.XUM_LLMFormat-80"><span class="linenos"> 80</span></a>                <span class="p">{</span><span class="s2">&quot;role&quot;</span><span class="p">:</span> <span class="s2">&quot;user&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span><span class="p">:</span> <span class="n">prompt</span><span class="p">}</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-81"><a href="#WBClean_XUM.XUM_LLMFormat-81"><span class="linenos"> 81</span></a>            <span class="p">],</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-82"><a href="#WBClean_XUM.XUM_LLMFormat-82"><span class="linenos"> 82</span></a>            <span class="s2">&quot;temperature&quot;</span><span class="p">:</span> <span class="n">temperature</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-83"><a href="#WBClean_XUM.XUM_LLMFormat-83"><span class="linenos"> 83</span></a>            <span class="s2">&quot;max_tokens&quot;</span><span class="p">:</span> <span class="n">maxTokens</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-84"><a href="#WBClean_XUM.XUM_LLMFormat-84"><span class="linenos"> 84</span></a>        <span class="p">}</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-85"><a href="#WBClean_XUM.XUM_LLMFormat-85"><span class="linenos"> 85</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-86"><a href="#WBClean_XUM.XUM_LLMFormat-86"><span class="linenos"> 86</span></a>        <span class="n">r</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-87"><a href="#WBClean_XUM.XUM_LLMFormat-87"><span class="linenos"> 87</span></a>            <span class="n">APIUrl</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-88"><a href="#WBClean_XUM.XUM_LLMFormat-88"><span class="linenos"> 88</span></a>            <span class="n">headers</span><span class="o">=</span><span class="p">{</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-89"><a href="#WBClean_XUM.XUM_LLMFormat-89"><span class="linenos"> 89</span></a>                <span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">Key</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-90"><a href="#WBClean_XUM.XUM_LLMFormat-90"><span class="linenos"> 90</span></a>                <span class="s2">&quot;Content-Type&quot;</span><span class="p">:</span> <span class="n">contentType</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-91"><a href="#WBClean_XUM.XUM_LLMFormat-91"><span class="linenos"> 91</span></a>            <span class="p">},</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-92"><a href="#WBClean_XUM.XUM_LLMFormat-92"><span class="linenos"> 92</span></a>            <span class="n">json</span><span class="o">=</span><span class="n">payload</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-93"><a href="#WBClean_XUM.XUM_LLMFormat-93"><span class="linenos"> 93</span></a>            <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-94"><a href="#WBClean_XUM.XUM_LLMFormat-94"><span class="linenos"> 94</span></a>        <span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-95"><a href="#WBClean_XUM.XUM_LLMFormat-95"><span class="linenos"> 95</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-96"><a href="#WBClean_XUM.XUM_LLMFormat-96"><span class="linenos"> 96</span></a>        <span class="k">if</span> <span class="n">r</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-97"><a href="#WBClean_XUM.XUM_LLMFormat-97"><span class="linenos"> 97</span></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-98"><a href="#WBClean_XUM.XUM_LLMFormat-98"><span class="linenos"> 98</span></a>                <span class="sa">f</span><span class="s2">&quot;GROQ ERROR </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">r</span><span class="o">.</span><span class="n">text</span><span class="si">}</span><span class="s2">&quot;</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-99"><a href="#WBClean_XUM.XUM_LLMFormat-99"><span class="linenos"> 99</span></a>            <span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-100"><a href="#WBClean_XUM.XUM_LLMFormat-100"><span class="linenos">100</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-101"><a href="#WBClean_XUM.XUM_LLMFormat-101"><span class="linenos">101</span></a>        <span class="n">content</span> <span class="o">=</span> <span class="n">r</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">&quot;choices&quot;</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;message&quot;</span><span class="p">][</span><span class="s2">&quot;content&quot;</span><span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-102"><a href="#WBClean_XUM.XUM_LLMFormat-102"><span class="linenos">102</span></a>        <span class="k">try</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-103"><a href="#WBClean_XUM.XUM_LLMFormat-103"><span class="linenos">103</span></a>            <span class="n">data</span> <span class="o">=</span> <span class="n">content</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-104"><a href="#WBClean_XUM.XUM_LLMFormat-104"><span class="linenos">104</span></a>        <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-105"><a href="#WBClean_XUM.XUM_LLMFormat-105"><span class="linenos">105</span></a>            <span class="k">raise</span> <span class="ne">RuntimeError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;LLM did not return valid JSON. Raw content:</span><span class="se">\n</span><span class="si">{</span><span class="n">content</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span> <span class="kn">from</span><span class="w"> </span><span class="nn">e</span>
+</span><span id="WBClean_XUM.XUM_LLMFormat-106"><a href="#WBClean_XUM.XUM_LLMFormat-106"><span class="linenos">106</span></a>
+</span><span id="WBClean_XUM.XUM_LLMFormat-107"><a href="#WBClean_XUM.XUM_LLMFormat-107"><span class="linenos">107</span></a>        <span class="k">return</span> <span class="n">data</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="WBClean_XUM.XUM_DeleteRows" class="classattr">
+                                        <input id="WBClean_XUM.XUM_DeleteRows-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_DeleteRows</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">Table2dArray</span>, </span><span class="param"><span class="n">rowIndexList</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_DeleteRows-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_DeleteRows"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_DeleteRows-109"><a href="#WBClean_XUM.XUM_DeleteRows-109"><span class="linenos">109</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_DeleteRows</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Table2dArray</span><span class="p">,</span> <span class="n">rowIndexList</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_DeleteRows-110"><a href="#WBClean_XUM.XUM_DeleteRows-110"><span class="linenos">110</span></a>        <span class="n">rows_to_drop</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">rowIndexList</span><span class="p">)</span>  <span class="c1"># 0-based indices</span>
+</span><span id="WBClean_XUM.XUM_DeleteRows-111"><a href="#WBClean_XUM.XUM_DeleteRows-111"><span class="linenos">111</span></a>
+</span><span id="WBClean_XUM.XUM_DeleteRows-112"><a href="#WBClean_XUM.XUM_DeleteRows-112"><span class="linenos">112</span></a>        <span class="n">newTable</span> <span class="o">=</span> <span class="p">[</span>
+</span><span id="WBClean_XUM.XUM_DeleteRows-113"><a href="#WBClean_XUM.XUM_DeleteRows-113"><span class="linenos">113</span></a>            <span class="n">row</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">Table2dArray</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_DeleteRows-114"><a href="#WBClean_XUM.XUM_DeleteRows-114"><span class="linenos">114</span></a>            <span class="k">if</span> <span class="n">idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">rows_to_drop</span>
+</span><span id="WBClean_XUM.XUM_DeleteRows-115"><a href="#WBClean_XUM.XUM_DeleteRows-115"><span class="linenos">115</span></a>        <span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_DeleteRows-116"><a href="#WBClean_XUM.XUM_DeleteRows-116"><span class="linenos">116</span></a>        <span class="k">return</span> <span class="n">newTable</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="WBClean_XUM.XUM_DeleteColumns" class="classattr">
+                                        <input id="WBClean_XUM.XUM_DeleteColumns-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_DeleteColumns</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">Table2dArray</span>, </span><span class="param"><span class="n">colIndexList</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_DeleteColumns-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_DeleteColumns"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_DeleteColumns-118"><a href="#WBClean_XUM.XUM_DeleteColumns-118"><span class="linenos">118</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_DeleteColumns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">Table2dArray</span><span class="p">,</span> <span class="n">colIndexList</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-119"><a href="#WBClean_XUM.XUM_DeleteColumns-119"><span class="linenos">119</span></a>        <span class="n">cols_to_drop</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">colIndexList</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-120"><a href="#WBClean_XUM.XUM_DeleteColumns-120"><span class="linenos">120</span></a>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-121"><a href="#WBClean_XUM.XUM_DeleteColumns-121"><span class="linenos">121</span></a>        <span class="n">newTable</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-122"><a href="#WBClean_XUM.XUM_DeleteColumns-122"><span class="linenos">122</span></a>        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">Table2dArray</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-123"><a href="#WBClean_XUM.XUM_DeleteColumns-123"><span class="linenos">123</span></a>            <span class="c1"># keep values whose 1-based index is NOT in cols_to_drop</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-124"><a href="#WBClean_XUM.XUM_DeleteColumns-124"><span class="linenos">124</span></a>            <span class="n">newRow</span> <span class="o">=</span> <span class="p">[</span><span class="n">val</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="k">if</span> <span class="n">idx</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">cols_to_drop</span><span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-125"><a href="#WBClean_XUM.XUM_DeleteColumns-125"><span class="linenos">125</span></a>            <span class="n">newTable</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">newRow</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-126"><a href="#WBClean_XUM.XUM_DeleteColumns-126"><span class="linenos">126</span></a>
+</span><span id="WBClean_XUM.XUM_DeleteColumns-127"><a href="#WBClean_XUM.XUM_DeleteColumns-127"><span class="linenos">127</span></a>        <span class="k">return</span> <span class="n">newTable</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="WBClean_XUM.XUM_TextPresenceRegex" class="classattr">
+                                        <input id="WBClean_XUM.XUM_TextPresenceRegex-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_TextPresenceRegex</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">x</span>, </span><span class="param"><span class="n">pattern</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_TextPresenceRegex-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_TextPresenceRegex"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_TextPresenceRegex-129"><a href="#WBClean_XUM.XUM_TextPresenceRegex-129"><span class="linenos">129</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_TextPresenceRegex</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">pattern</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_TextPresenceRegex-130"><a href="#WBClean_XUM.XUM_TextPresenceRegex-130"><span class="linenos">130</span></a>        <span class="k">if</span> <span class="n">x</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_TextPresenceRegex-131"><a href="#WBClean_XUM.XUM_TextPresenceRegex-131"><span class="linenos">131</span></a>            <span class="k">return</span> <span class="kc">False</span>
+</span><span id="WBClean_XUM.XUM_TextPresenceRegex-132"><a href="#WBClean_XUM.XUM_TextPresenceRegex-132"><span class="linenos">132</span></a>        <span class="k">return</span> <span class="n">pattern</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="WBClean_XUM.XUM_XLSConversion" class="classattr">
+                                        <input id="WBClean_XUM.XUM_XLSConversion-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_XLSConversion</span><span class="signature pdoc-code condensed">(<span class="param"><span class="bp">self</span>, </span><span class="param"><span class="n">xlsPath</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_XLSConversion-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_XLSConversion"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_XLSConversion-134"><a href="#WBClean_XUM.XUM_XLSConversion-134"><span class="linenos">134</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_XLSConversion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">xlsPath</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-135"><a href="#WBClean_XUM.XUM_XLSConversion-135"><span class="linenos">135</span></a>        <span class="n">xls_path</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">xlsPath</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-136"><a href="#WBClean_XUM.XUM_XLSConversion-136"><span class="linenos">136</span></a>        <span class="k">if</span> <span class="n">xlsPath</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-137"><a href="#WBClean_XUM.XUM_XLSConversion-137"><span class="linenos">137</span></a>            <span class="n">root</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">xls_path</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-138"><a href="#WBClean_XUM.XUM_XLSConversion-138"><span class="linenos">138</span></a>            <span class="n">xlsx_path</span> <span class="o">=</span> <span class="n">root</span> <span class="o">+</span> <span class="s2">&quot;.xlsx&quot;</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-139"><a href="#WBClean_XUM.XUM_XLSConversion-139"><span class="linenos">139</span></a>        <span class="n">xlsxPath</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">abspath</span><span class="p">(</span><span class="n">xlsPath</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-140"><a href="#WBClean_XUM.XUM_XLSConversion-140"><span class="linenos">140</span></a>
+</span><span id="WBClean_XUM.XUM_XLSConversion-141"><a href="#WBClean_XUM.XUM_XLSConversion-141"><span class="linenos">141</span></a>        <span class="n">excel</span> <span class="o">=</span> <span class="n">win32</span><span class="o">.</span><span class="n">Dispatch</span><span class="p">(</span><span class="s2">&quot;Excel.Application&quot;</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-142"><a href="#WBClean_XUM.XUM_XLSConversion-142"><span class="linenos">142</span></a>        <span class="n">excel</span><span class="o">.</span><span class="n">Visible</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-143"><a href="#WBClean_XUM.XUM_XLSConversion-143"><span class="linenos">143</span></a>        <span class="n">excel</span><span class="o">.</span><span class="n">DisplayAlerts</span> <span class="o">=</span> <span class="kc">False</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-144"><a href="#WBClean_XUM.XUM_XLSConversion-144"><span class="linenos">144</span></a>
+</span><span id="WBClean_XUM.XUM_XLSConversion-145"><a href="#WBClean_XUM.XUM_XLSConversion-145"><span class="linenos">145</span></a>        <span class="n">wb</span> <span class="o">=</span> <span class="n">excel</span><span class="o">.</span><span class="n">Workbooks</span><span class="o">.</span><span class="n">Open</span><span class="p">(</span><span class="n">xls_path</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-146"><a href="#WBClean_XUM.XUM_XLSConversion-146"><span class="linenos">146</span></a>        <span class="n">wb</span><span class="o">.</span><span class="n">SaveAs</span><span class="p">(</span><span class="n">xlsxPath</span><span class="p">,</span> <span class="n">FileFormat</span><span class="o">=</span><span class="mi">51</span><span class="p">)</span>  <span class="c1"># 51 = xlOpenXMLWorkbook (.xlsx)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-147"><a href="#WBClean_XUM.XUM_XLSConversion-147"><span class="linenos">147</span></a>        <span class="n">wb</span><span class="o">.</span><span class="n">Close</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-148"><a href="#WBClean_XUM.XUM_XLSConversion-148"><span class="linenos">148</span></a>        <span class="n">excel</span><span class="o">.</span><span class="n">Quit</span><span class="p">()</span>
+</span><span id="WBClean_XUM.XUM_XLSConversion-149"><a href="#WBClean_XUM.XUM_XLSConversion-149"><span class="linenos">149</span></a>
+</span><span id="WBClean_XUM.XUM_XLSConversion-150"><a href="#WBClean_XUM.XUM_XLSConversion-150"><span class="linenos">150</span></a>        <span class="k">return</span> <span class="n">xlsxPath</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                            <div id="WBClean_XUM.XUM_Clean" class="classattr">
+                                        <input id="WBClean_XUM.XUM_Clean-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">XUM_Clean</span><span class="signature pdoc-code multiline">(<span class="param">	<span class="bp">self</span>,</span><span class="param">	<span class="n">filePath</span>,</span><span class="param">	<span class="n">pattern</span>,</span><span class="param">	<span class="n">returnDF</span><span class="o">=</span><span class="kc">True</span>,</span><span class="param">	<span class="n">remove_none</span><span class="o">=</span><span class="kc">True</span>,</span><span class="param">	<span class="n">getImpFeatures</span><span class="o">=</span><span class="kc">False</span>,</span><span class="param">	<span class="n">prompt_ReqFeildString</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">prompt_ReqJSONOutputString</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">Key</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">sheetName</span><span class="o">=</span><span class="kc">None</span>,</span><span class="param">	<span class="n">destinationSheet</span><span class="o">=</span><span class="s1">&#39;WBClean_XUM&#39;</span>,</span><span class="param">	<span class="n">APIUrl</span><span class="o">=</span><span class="s1">&#39;https://api.groq.com/openai/v1/chat/completions&#39;</span>,</span><span class="param">	<span class="n">groqModel</span><span class="o">=</span><span class="s1">&#39;llama-3.3-70b-versatile&#39;</span>,</span><span class="param">	<span class="n">contentType</span><span class="o">=</span><span class="s1">&#39;application/json&#39;</span>,</span><span class="param">	<span class="n">temperature</span><span class="o">=</span><span class="mi">0</span>,</span><span class="param">	<span class="n">maxTokens</span><span class="o">=</span><span class="mi">512</span></span><span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="WBClean_XUM.XUM_Clean-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#WBClean_XUM.XUM_Clean"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="WBClean_XUM.XUM_Clean-152"><a href="#WBClean_XUM.XUM_Clean-152"><span class="linenos">152</span></a>    <span class="k">def</span><span class="w"> </span><span class="nf">XUM_Clean</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">filePath</span><span class="p">,</span> <span class="n">pattern</span><span class="p">,</span> <span class="n">returnDF</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">remove_none</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">getImpFeatures</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-153"><a href="#WBClean_XUM.XUM_Clean-153"><span class="linenos">153</span></a>                  <span class="n">prompt_ReqFeildString</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">prompt_ReqJSONOutputString</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-154"><a href="#WBClean_XUM.XUM_Clean-154"><span class="linenos">154</span></a>                  <span class="n">sheetName</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-155"><a href="#WBClean_XUM.XUM_Clean-155"><span class="linenos">155</span></a>                  <span class="n">destinationSheet</span><span class="o">=</span><span class="s2">&quot;WBClean_XUM&quot;</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-156"><a href="#WBClean_XUM.XUM_Clean-156"><span class="linenos">156</span></a>                  <span class="n">APIUrl</span><span class="o">=</span><span class="s2">&quot;https://api.groq.com/openai/v1/chat/completions&quot;</span><span class="p">,</span> <span class="n">groqModel</span><span class="o">=</span><span class="s2">&quot;llama-3.3-70b-versatile&quot;</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-157"><a href="#WBClean_XUM.XUM_Clean-157"><span class="linenos">157</span></a>                  <span class="n">contentType</span><span class="o">=</span><span class="s2">&quot;application/json&quot;</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">maxTokens</span><span class="o">=</span><span class="mi">512</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_Clean-158"><a href="#WBClean_XUM.XUM_Clean-158"><span class="linenos">158</span></a>        <span class="n">transposedList</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_TransposeSheet</span><span class="p">(</span>
+</span><span id="WBClean_XUM.XUM_Clean-159"><a href="#WBClean_XUM.XUM_Clean-159"><span class="linenos">159</span></a>            <span class="n">src_path</span><span class="o">=</span><span class="n">filePath</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-160"><a href="#WBClean_XUM.XUM_Clean-160"><span class="linenos">160</span></a>            <span class="n">src_sheet_name</span><span class="o">=</span><span class="n">sheetName</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-161"><a href="#WBClean_XUM.XUM_Clean-161"><span class="linenos">161</span></a>            <span class="n">dst_sheet_name</span><span class="o">=</span><span class="n">destinationSheet</span>
+</span><span id="WBClean_XUM.XUM_Clean-162"><a href="#WBClean_XUM.XUM_Clean-162"><span class="linenos">162</span></a>        <span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-163"><a href="#WBClean_XUM.XUM_Clean-163"><span class="linenos">163</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-164"><a href="#WBClean_XUM.XUM_Clean-164"><span class="linenos">164</span></a>        <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM.XUM_Clean-165"><a href="#WBClean_XUM.XUM_Clean-165"><span class="linenos">165</span></a>        <span class="n">foundIndex</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM.XUM_Clean-166"><a href="#WBClean_XUM.XUM_Clean-166"><span class="linenos">166</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-167"><a href="#WBClean_XUM.XUM_Clean-167"><span class="linenos">167</span></a>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">transposedList</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-168"><a href="#WBClean_XUM.XUM_Clean-168"><span class="linenos">168</span></a>            <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_Clean-169"><a href="#WBClean_XUM.XUM_Clean-169"><span class="linenos">169</span></a>                <span class="k">if</span> <span class="n">value</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-170"><a href="#WBClean_XUM.XUM_Clean-170"><span class="linenos">170</span></a>                    <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-171"><a href="#WBClean_XUM.XUM_Clean-171"><span class="linenos">171</span></a>                <span class="k">elif</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_TextPresenceRegex</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">compile</span><span class="p">(</span><span class="sa">rf</span><span class="s1">&#39;\b(?:</span><span class="si">{</span><span class="n">pattern</span><span class="si">}</span><span class="s1">)\b&#39;</span><span class="p">,</span> <span class="n">re</span><span class="o">.</span><span class="n">I</span><span class="p">)):</span>
+</span><span id="WBClean_XUM.XUM_Clean-172"><a href="#WBClean_XUM.XUM_Clean-172"><span class="linenos">172</span></a>                    <span class="n">foundIndex</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ind</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-173"><a href="#WBClean_XUM.XUM_Clean-173"><span class="linenos">173</span></a>                    <span class="k">break</span>
+</span><span id="WBClean_XUM.XUM_Clean-174"><a href="#WBClean_XUM.XUM_Clean-174"><span class="linenos">174</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-175"><a href="#WBClean_XUM.XUM_Clean-175"><span class="linenos">175</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-176"><a href="#WBClean_XUM.XUM_Clean-176"><span class="linenos">176</span></a>        <span class="n">captureCols</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">out</span> <span class="k">if</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="n">foundIndex</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+</span><span id="WBClean_XUM.XUM_Clean-177"><a href="#WBClean_XUM.XUM_Clean-177"><span class="linenos">177</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-178"><a href="#WBClean_XUM.XUM_Clean-178"><span class="linenos">178</span></a>        <span class="n">freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">captureCols</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-179"><a href="#WBClean_XUM.XUM_Clean-179"><span class="linenos">179</span></a>        <span class="n">result</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span>
+</span><span id="WBClean_XUM.XUM_Clean-180"><a href="#WBClean_XUM.XUM_Clean-180"><span class="linenos">180</span></a>            <span class="p">[(</span><span class="n">num</span><span class="p">,</span> <span class="n">cnt</span><span class="p">)</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">freq</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">cnt</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">],</span>
+</span><span id="WBClean_XUM.XUM_Clean-181"><a href="#WBClean_XUM.XUM_Clean-181"><span class="linenos">181</span></a>            <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>
+</span><span id="WBClean_XUM.XUM_Clean-182"><a href="#WBClean_XUM.XUM_Clean-182"><span class="linenos">182</span></a>            <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span>
+</span><span id="WBClean_XUM.XUM_Clean-183"><a href="#WBClean_XUM.XUM_Clean-183"><span class="linenos">183</span></a>        <span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-184"><a href="#WBClean_XUM.XUM_Clean-184"><span class="linenos">184</span></a>        <span class="n">nums_only</span> <span class="o">=</span> <span class="p">[</span><span class="n">num</span> <span class="k">for</span> <span class="n">num</span><span class="p">,</span> <span class="n">cnt</span> <span class="ow">in</span> <span class="n">result</span><span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_Clean-185"><a href="#WBClean_XUM.XUM_Clean-185"><span class="linenos">185</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-186"><a href="#WBClean_XUM.XUM_Clean-186"><span class="linenos">186</span></a>        <span class="n">newTable</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_DeleteColumns</span><span class="p">(</span><span class="n">Table2dArray</span><span class="o">=</span><span class="n">transposedList</span><span class="p">,</span> <span class="n">colIndexList</span><span class="o">=</span><span class="n">nums_only</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-187"><a href="#WBClean_XUM.XUM_Clean-187"><span class="linenos">187</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-188"><a href="#WBClean_XUM.XUM_Clean-188"><span class="linenos">188</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-189"><a href="#WBClean_XUM.XUM_Clean-189"><span class="linenos">189</span></a>        <span class="n">headerColumns</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">newTable</span> <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_Clean-190"><a href="#WBClean_XUM.XUM_Clean-190"><span class="linenos">190</span></a>        <span class="n">row1Values</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">newTable</span> <span class="k">for</span> <span class="n">ind</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="k">if</span> <span class="n">ind</span> <span class="o">==</span> <span class="mi">1</span><span class="p">]</span>
+</span><span id="WBClean_XUM.XUM_Clean-191"><a href="#WBClean_XUM.XUM_Clean-191"><span class="linenos">191</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-192"><a href="#WBClean_XUM.XUM_Clean-192"><span class="linenos">192</span></a>        <span class="k">if</span> <span class="n">getImpFeatures</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-193"><a href="#WBClean_XUM.XUM_Clean-193"><span class="linenos">193</span></a>            <span class="n">testSample</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">headerColumns</span><span class="p">,</span> <span class="n">row1Values</span><span class="p">))</span>
+</span><span id="WBClean_XUM.XUM_Clean-194"><a href="#WBClean_XUM.XUM_Clean-194"><span class="linenos">194</span></a>            <span class="n">columnMapping</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_LLMFormat</span><span class="p">(</span>
+</span><span id="WBClean_XUM.XUM_Clean-195"><a href="#WBClean_XUM.XUM_Clean-195"><span class="linenos">195</span></a>                <span class="n">prompt_ReqFeildString</span><span class="o">=</span><span class="n">prompt_ReqFeildString</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-196"><a href="#WBClean_XUM.XUM_Clean-196"><span class="linenos">196</span></a>                <span class="n">prompt_ReqJSONOutputString</span><span class="o">=</span><span class="n">prompt_ReqJSONOutputString</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-197"><a href="#WBClean_XUM.XUM_Clean-197"><span class="linenos">197</span></a>                <span class="n">prompt_SampleData</span><span class="o">=</span><span class="n">testSample</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-198"><a href="#WBClean_XUM.XUM_Clean-198"><span class="linenos">198</span></a>                <span class="n">Key</span><span class="o">=</span><span class="n">Key</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-199"><a href="#WBClean_XUM.XUM_Clean-199"><span class="linenos">199</span></a>                <span class="n">APIUrl</span><span class="o">=</span><span class="n">APIUrl</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-200"><a href="#WBClean_XUM.XUM_Clean-200"><span class="linenos">200</span></a>                <span class="n">groqModel</span><span class="o">=</span><span class="n">groqModel</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-201"><a href="#WBClean_XUM.XUM_Clean-201"><span class="linenos">201</span></a>                <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-202"><a href="#WBClean_XUM.XUM_Clean-202"><span class="linenos">202</span></a>                <span class="n">maxTokens</span><span class="o">=</span><span class="n">maxTokens</span><span class="p">,</span>
+</span><span id="WBClean_XUM.XUM_Clean-203"><a href="#WBClean_XUM.XUM_Clean-203"><span class="linenos">203</span></a>                <span class="n">contentType</span><span class="o">=</span><span class="n">contentType</span>
+</span><span id="WBClean_XUM.XUM_Clean-204"><a href="#WBClean_XUM.XUM_Clean-204"><span class="linenos">204</span></a>            <span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-205"><a href="#WBClean_XUM.XUM_Clean-205"><span class="linenos">205</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-206"><a href="#WBClean_XUM.XUM_Clean-206"><span class="linenos">206</span></a>            <span class="n">rowsWeDontNeed</span> <span class="o">=</span> <span class="p">[]</span>
+</span><span id="WBClean_XUM.XUM_Clean-207"><a href="#WBClean_XUM.XUM_Clean-207"><span class="linenos">207</span></a>            <span class="k">for</span> <span class="n">rowInd</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">newTable</span><span class="p">):</span>
+</span><span id="WBClean_XUM.XUM_Clean-208"><a href="#WBClean_XUM.XUM_Clean-208"><span class="linenos">208</span></a>                <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-209"><a href="#WBClean_XUM.XUM_Clean-209"><span class="linenos">209</span></a>                    <span class="n">rowsWeDontNeed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowInd</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-210"><a href="#WBClean_XUM.XUM_Clean-210"><span class="linenos">210</span></a>                <span class="k">elif</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">columnMapping</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-211"><a href="#WBClean_XUM.XUM_Clean-211"><span class="linenos">211</span></a>                    <span class="k">pass</span>
+</span><span id="WBClean_XUM.XUM_Clean-212"><a href="#WBClean_XUM.XUM_Clean-212"><span class="linenos">212</span></a>                <span class="k">else</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-213"><a href="#WBClean_XUM.XUM_Clean-213"><span class="linenos">213</span></a>                    <span class="n">rowsWeDontNeed</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">rowInd</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-214"><a href="#WBClean_XUM.XUM_Clean-214"><span class="linenos">214</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-215"><a href="#WBClean_XUM.XUM_Clean-215"><span class="linenos">215</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-216"><a href="#WBClean_XUM.XUM_Clean-216"><span class="linenos">216</span></a>            <span class="n">TableWeNeed</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_DeleteRows</span><span class="p">(</span><span class="n">Table2dArray</span><span class="o">=</span><span class="n">newTable</span><span class="p">,</span> <span class="n">rowIndexList</span><span class="o">=</span><span class="n">rowsWeDontNeed</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-217"><a href="#WBClean_XUM.XUM_Clean-217"><span class="linenos">217</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-218"><a href="#WBClean_XUM.XUM_Clean-218"><span class="linenos">218</span></a>            <span class="n">newTable</span> <span class="o">=</span> <span class="n">TableWeNeed</span>
+</span><span id="WBClean_XUM.XUM_Clean-219"><a href="#WBClean_XUM.XUM_Clean-219"><span class="linenos">219</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-220"><a href="#WBClean_XUM.XUM_Clean-220"><span class="linenos">220</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-221"><a href="#WBClean_XUM.XUM_Clean-221"><span class="linenos">221</span></a>            <span class="n">newTable</span> <span class="o">=</span> <span class="n">newTable</span>
+</span><span id="WBClean_XUM.XUM_Clean-222"><a href="#WBClean_XUM.XUM_Clean-222"><span class="linenos">222</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-223"><a href="#WBClean_XUM.XUM_Clean-223"><span class="linenos">223</span></a>        <span class="n">transposeToNormal</span> <span class="o">=</span> <span class="p">[</span><span class="nb">list</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="k">for</span> <span class="n">r</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">newTable</span><span class="p">)]</span>
+</span><span id="WBClean_XUM.XUM_Clean-224"><a href="#WBClean_XUM.XUM_Clean-224"><span class="linenos">224</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-225"><a href="#WBClean_XUM.XUM_Clean-225"><span class="linenos">225</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-226"><a href="#WBClean_XUM.XUM_Clean-226"><span class="linenos">226</span></a>        <span class="k">if</span> <span class="n">remove_none</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-227"><a href="#WBClean_XUM.XUM_Clean-227"><span class="linenos">227</span></a>            <span class="n">rowsToDelete</span> <span class="o">=</span> <span class="p">[</span><span class="n">idx</span> <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">transposeToNormal</span><span class="p">)</span> <span class="k">if</span> <span class="nb">all</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="kc">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">row</span><span class="p">)]</span>
+</span><span id="WBClean_XUM.XUM_Clean-228"><a href="#WBClean_XUM.XUM_Clean-228"><span class="linenos">228</span></a>            <span class="n">table</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">XUM_DeleteRows</span><span class="p">(</span><span class="n">Table2dArray</span><span class="o">=</span><span class="n">transposeToNormal</span><span class="p">,</span> <span class="n">rowIndexList</span><span class="o">=</span><span class="n">rowsToDelete</span><span class="p">)</span>
+</span><span id="WBClean_XUM.XUM_Clean-229"><a href="#WBClean_XUM.XUM_Clean-229"><span class="linenos">229</span></a>        <span class="k">else</span><span class="p">:</span>
+</span><span id="WBClean_XUM.XUM_Clean-230"><a href="#WBClean_XUM.XUM_Clean-230"><span class="linenos">230</span></a>            <span class="n">table</span> <span class="o">=</span> <span class="n">transposeToNormal</span>
+</span><span id="WBClean_XUM.XUM_Clean-231"><a href="#WBClean_XUM.XUM_Clean-231"><span class="linenos">231</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-232"><a href="#WBClean_XUM.XUM_Clean-232"><span class="linenos">232</span></a>        <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">table</span><span class="p">[</span><span class="mi">1</span><span class="p">:],</span> <span class="n">columns</span><span class="o">=</span><span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+</span><span id="WBClean_XUM.XUM_Clean-233"><a href="#WBClean_XUM.XUM_Clean-233"><span class="linenos">233</span></a>
+</span><span id="WBClean_XUM.XUM_Clean-234"><a href="#WBClean_XUM.XUM_Clean-234"><span class="linenos">234</span></a>        <span class="k">return</span> <span class="n">df</span> <span class="k">if</span> <span class="n">returnDF</span> <span class="k">else</span> <span class="n">df</span><span class="o">.</span><span class="n">to_excel</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">destinationSheet</span><span class="si">}</span><span class="s2">.xlsx&quot;</span><span class="p">)</span>
+</span></pre></div>
+
+
+    
+
+                            </div>
+                </section>
+                <section id="new">
+                            <input id="new-view-source" class="view-source-toggle-state" type="checkbox" aria-hidden="true" tabindex="-1">
+<div class="attr function">
+            
+        <span class="def">def</span>
+        <span class="name">new</span><span class="signature pdoc-code condensed">(<span class="return-annotation">):</span></span>
+
+                <label class="view-source-button" for="new-view-source"><span>View Source</span></label>
+
+    </div>
+    <a class="headerlink" href="#new"></a>
+            <div class="pdoc-code codehilite"><pre><span></span><span id="new-4"><a href="#new-4"><span class="linenos">4</span></a><span class="k">def</span><span class="w"> </span><span class="nf">new</span><span class="p">():</span>
+</span><span id="new-5"><a href="#new-5"><span class="linenos">5</span></a>    <span class="k">return</span> <span class="n">WBClean_XUM</span><span class="p">()</span>
+</span></pre></div>
+
+
+    
+
+                </section>
     </main>
-<script>
-    function escapeHTML(html) {
-        return document.createElement('div').appendChild(document.createTextNode(html)).parentNode.innerHTML;
-    }
-
-    const originalContent = document.querySelector("main.pdoc");
-    let currentContent = originalContent;
-
-    function setContent(innerHTML) {
-        let elem;
-        if (innerHTML) {
-            elem = document.createElement("main");
-            elem.classList.add("pdoc");
-            elem.innerHTML = innerHTML;
-        } else {
-            elem = originalContent;
-        }
-        if (currentContent !== elem) {
-            currentContent.replaceWith(elem);
-            currentContent = elem;
-        }
-    }
-
-    function getSearchTerm() {
-        return (new URL(window.location)).searchParams.get("search");
-    }
-
-    const searchBox = document.querySelector(".pdoc input[type=search]");
-    searchBox.addEventListener("input", function () {
-        let url = new URL(window.location);
-        if (searchBox.value.trim()) {
-            url.hash = "";
-            url.searchParams.set("search", searchBox.value);
-        } else {
-            url.searchParams.delete("search");
-        }
-        history.replaceState("", "", url.toString());
-        onInput();
-    });
-    window.addEventListener("popstate", onInput);
-
-
-    let search, searchErr;
-
-    async function initialize() {
-        try {
-            search = await new Promise((resolve, reject) => {
-                const script = document.createElement("script");
-                script.type = "text/javascript";
-                script.async = true;
-                script.onload = () => resolve(window.pdocSearch);
-                script.onerror = (e) => reject(e);
-                script.src = "../../search.js";
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        } catch (e) {
-            console.error("Cannot fetch pdoc search index");
-            searchErr = "Cannot fetch search index.";
-        }
-        onInput();
-
-        document.querySelector("nav.pdoc").addEventListener("click", e => {
-            if (e.target.hash) {
-                searchBox.value = "";
-                searchBox.dispatchEvent(new Event("input"));
-            }
-        });
-    }
-
-    function onInput() {
-        setContent((() => {
-            const term = getSearchTerm();
-            if (!term) {
-                return null
-            }
-            if (searchErr) {
-                return `<h3>Error: ${searchErr}</h3>`
-            }
-            if (!search) {
-                return "<h3>Searching...</h3>"
-            }
-
-            window.scrollTo({top: 0, left: 0, behavior: 'auto'});
-
-            const results = search(term);
-
-            let html;
-            if (results.length === 0) {
-                html = `No search results for '${escapeHTML(term)}'.`
-            } else {
-                html = `<h4>${results.length} search result${results.length > 1 ? "s" : ""} for '${escapeHTML(term)}'.</h4>`;
-            }
-            for (let result of results.slice(0, 10)) {
-                let doc = result.doc;
-                let url = `../../${doc.modulename.replaceAll(".", "/")}.html`;
-                if (doc.qualname) {
-                    url += `#${doc.qualname}`;
-                }
-
-                let heading;
-                switch (result.doc.kind) {
-                    case "function":
-                        if (doc.fullname.endsWith(".__init__")) {
-                            heading = `<span class="name">${doc.fullname.replace(/\.__init__$/, "")}</span>${doc.signature}`;
-                        } else {
-                            heading = `<span class="def">${doc.funcdef}</span> <span class="name">${doc.fullname}</span>${doc.signature}`;
-                        }
-                        break;
-                    case "class":
-                        heading = `<span class="def">class</span> <span class="name">${doc.fullname}</span>`;
-                        if (doc.bases)
-                            heading += `<wbr>(<span class="base">${doc.bases}</span>)`;
-                        heading += `:`;
-                        break;
-                    case "variable":
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        if (doc.annotation)
-                            heading += `<span class="annotation">${doc.annotation}</span>`;
-                        if (doc.default_value)
-                            heading += `<span class="default_value"> = ${doc.default_value}</span>`;
-                        break;
-                    default:
-                        heading = `<span class="name">${doc.fullname}</span>`;
-                        break;
-                }
-                html += `
-                        <section class="search-result">
-                        <a href="${url}" class="attr ${doc.kind}">${heading}</a>
-                        <div class="docstring">${doc.doc}</div>
-                        </section>
-                    `;
-
-            }
-            return html;
-        })());
-    }
-
-    if (getSearchTerm()) {
-        initialize();
-        searchBox.value = getSearchTerm();
-        onInput();
-    } else {
-        searchBox.addEventListener("focus", initialize, {once: true});
-    }
-
-    searchBox.addEventListener("keydown", e => {
-        if (["ArrowDown", "ArrowUp", "Enter"].includes(e.key)) {
-            let focused = currentContent.querySelector(".search-result.focused");
-            if (!focused) {
-                currentContent.querySelector(".search-result").classList.add("focused");
-            } else if (
-                e.key === "ArrowDown"
-                && focused.nextElementSibling
-                && focused.nextElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.nextElementSibling.classList.add("focused");
-                focused.nextElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "ArrowUp"
-                && focused.previousElementSibling
-                && focused.previousElementSibling.classList.contains("search-result")
-            ) {
-                focused.classList.remove("focused");
-                focused.previousElementSibling.classList.add("focused");
-                focused.previousElementSibling.scrollIntoView({
-                    behavior: "smooth",
-                    block: "nearest",
-                    inline: "nearest"
-                });
-            } else if (
-                e.key === "Enter"
-            ) {
-                focused.querySelector("a").click();
-            }
-        }
-    });
-</script></body>
+</body>
 </html>
