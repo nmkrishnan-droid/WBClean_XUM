@@ -155,9 +155,9 @@ class WBClean_XUM:
                   APIUrl="https://api.groq.com/openai/v1/chat/completions", groqModel="llama-3.3-70b-versatile",
                   contentType="application/json", temperature=0, maxTokens=512):
         transposedList = self.XUM_TransposeSheet(
-            src_path=filePath,
-            src_sheet_name=sheetName,
-            dst_sheet_name=destinationSheet
+            srcPath=filePath,
+            srcSheetName=sheetName,
+            destinationSheetName=destinationSheet
         )
 
         out = []
@@ -218,6 +218,7 @@ class WBClean_XUM:
 
         else:
             newTable = newTable
+            columnMapping = '{"mapping":"nil"}'
 
         transposeToNormal = [list(r) for r in zip(*newTable)]
 
@@ -230,6 +231,6 @@ class WBClean_XUM:
 
         df = pd.DataFrame(table[1:], columns=table[0])
 
-        return df if returnDF else df.to_excel(f"{destinationSheet}.xlsx")
+        return {"df":df,"mapping":columnMapping} if returnDF else df.to_excel(f"{destinationSheet}.xlsx")
 
 
