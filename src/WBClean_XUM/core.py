@@ -3,7 +3,6 @@ import pandas as pd
 from openpyxl import load_workbook, Workbook
 from collections import Counter
 import requests
-import win32com.client as win32
 import os
 
 
@@ -130,23 +129,23 @@ class WBClean_XUM:
             return False
         return pattern.search(str(x)) is not None
 
-    def XUM_XLSConversion(self, xlsPath):
-        xls_path = os.path.abspath(xlsPath)
-        if xlsPath is None:
-            root, _ = os.path.splitext(xls_path)
-            xlsx_path = root + ".xlsx"
-        xlsxPath = os.path.abspath(xlsPath)
-
-        excel = win32.Dispatch("Excel.Application")
-        excel.Visible = False
-        excel.DisplayAlerts = False
-
-        wb = excel.Workbooks.Open(xls_path)
-        wb.SaveAs(xlsxPath, FileFormat=51)  # 51 = xlOpenXMLWorkbook (.xlsx)
-        wb.Close(False)
-        excel.Quit()
-
-        return xlsxPath
+    # def XUM_XLSConversion(self, xlsPath):
+    #     xls_path = os.path.abspath(xlsPath)
+    #     if xlsPath is None:
+    #         root, _ = os.path.splitext(xls_path)
+    #         xlsx_path = root + ".xlsx"
+    #     xlsxPath = os.path.abspath(xlsPath)
+    #
+    #     excel = win32.Dispatch("Excel.Application")
+    #     excel.Visible = False
+    #     excel.DisplayAlerts = False
+    #
+    #     wb = excel.Workbooks.Open(xls_path)
+    #     wb.SaveAs(xlsxPath, FileFormat=51)  # 51 = xlOpenXMLWorkbook (.xlsx)
+    #     wb.Close(False)
+    #     excel.Quit()
+    #
+    #     return xlsxPath
 
     def XUM_Clean(self, filePath, pattern, returnDF=True, remove_none=True, getImpFeatures=False,
                   prompt_ReqFeildString=None, prompt_ReqJSONOutputString=None, Key=None,
